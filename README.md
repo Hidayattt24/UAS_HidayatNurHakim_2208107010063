@@ -1,64 +1,68 @@
+---
+
 # 📝 Intelligent Email Writer for Students
 
-Proyek ini merupakan aplikasi berbasis Web yang memungkinkan mahasiswa membuat email secara otomatis dan profesional dengan bantuan teknologi Large Language Model (LLM) dari **Gemini API**.
+Aplikasi web yang membantu mahasiswa menulis email secara otomatis, profesional, dan efisien dengan dukungan **Large Language Model (LLM)** dari **Gemini API**.
 
 ---
 
 ## 📦 Fitur Utama
 
-- Memilih kategori email: Akademik, Skripsi, Magang, dll.
-- Menentukan nada (tone) penulisan: formal, netral, atau santai.
-- Mendukung Bahasa Indonesia dan Inggris.
-- Mengisi poin-poin utama yang ingin disampaikan dalam email.
-- Menghasilkan email yang profesional, jelas, dan padat secara otomatis.
+* ✅ Pilihan kategori email: Akademik, Skripsi, Magang, dan lainnya.
+* ✅ Penyesuaian nada penulisan: Formal, Netral, atau Santai.
+* ✅ Mendukung dua bahasa: Indonesia dan Inggris.
+* ✅ Input poin-poin utama yang ingin disampaikan.
+* ✅ Output email yang profesional, ringkas, dan sesuai konteks.
 
 ---
 
 ## 📁 Struktur Proyek
 
 ```
-intelligent\_email\_writer/
-├── .env                     # Berisi API Key Gemini
-├── app.py                  # Frontend dengan Streamlit
+intelligent_email_writer/
+├── .env                   # Berisi API Key Gemini (jangan dibagikan)
+├── .env.example           # Template konfigurasi untuk publik
+├── app.py                 # Frontend berbasis Streamlit
 ├── backend/
-│   └── main.py             # Backend API menggunakan FastAPI
-├── requirements.txt        # Dependensi backend
-├── requirements\_frontend.txt # Dependensi frontend (opsional)
-
+│   └── main.py            # Backend API menggunakan FastAPI
+├── requirements.txt       # Dependensi backend
+├── requirements_frontend.txt # Dependensi frontend (opsional)
 ```
 
 ---
 
-## ⚙️ Instalasi dan Menjalankan Proyek
+## ⚙️ Cara Instalasi & Menjalankan Proyek
 
-### 1. Kloning repository
+### 1. Kloning Repository
 
 ```bash
 git clone https://github.com/username/intelligent_email_writer.git
 cd intelligent_email_writer
 ```
 
-### 2. Setup dan jalankan Backend (FastAPI)
+### 2. Menyiapkan Environment & Backend (FastAPI)
 
 ```bash
-# Buat dan aktifkan environment
-python3 -m venv env
-source env/bin/activate   # Linux/macOS
-env\Scripts\activate      # Windows
+# Buat dan aktifkan virtual environment
+python -m venv env
+# Aktifkan:
+# - Windows
+env\Scripts\activate
+# - Linux/macOS
+source env/bin/activate
 
-# Install dependencies
+# Instal dependensi backend
 pip install -r requirements.txt
 
-# Jalankan server
+# Jalankan server FastAPI
 uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### 3. Setup dan jalankan Frontend (Streamlit)
+### 3. Menjalankan Frontend (Streamlit)
 
-Buka terminal baru:
+Buka terminal baru (jangan lupa aktifkan environment jika belum):
 
 ```bash
-# Pastikan sudah berada di direktori project
 streamlit run app.py
 ```
 
@@ -66,19 +70,36 @@ streamlit run app.py
 
 ## 🔐 Konfigurasi API Key Gemini
 
-1. Buka [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+1. Kunjungi: [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
 2. Klik **Create API Key**.
-3. Copy API key dan simpan ke dalam file `.env` di root project dengan format:
+3. Simpan API key ke dalam file `.env` di root proyek:
 
 ```env
 GEMINI_API_KEY=your_api_key_here
 ```
 
+> **Catatan:** Jangan pernah commit file `.env` ke GitHub. Gunakan `.env.example` sebagai panduan umum.
+
 ---
 
-## 📬 Contoh Penggunaan
+## 📄 Membuat File .env dari Template
 
-1. Pilih kategori dan gaya penulisan email.
+Untuk memulai, salin file template:
+
+```bash
+cp .env.example .env
+```
+
+Lalu isi dengan konfigurasi sesuai kebutuhan (misalnya API key).
+
+---
+
+## 📬 Contoh Penggunaan Aplikasi
+
+1. Pilih kategori dan gaya bahasa email.
 2. Masukkan informasi penerima, subjek, dan poin-poin penting.
-3. Klik tombol **"Buat Email"**.
-4. Email hasil generate akan ditampilkan di halaman aplikasi.
+3. Klik **"Buat Email"**.
+4. Hasil generate akan tampil di halaman utama.
+
+---
+
